@@ -21,10 +21,10 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	echo "Step 06 : Setting Hostname"
 	arch-chroot /mnt echo archvm | cat > /etc/hostname
 	echo "Step 07 : Setting Root Password"
-	arch-chroot /mnt echo root:rootpassword | chpasswd
+	arch-chroot /mnt echo "rootpassword\nrootpassword\n" | passwd
 	echo "Step 08 : Making and Adding Standard User"
 	arch-chroot /mnt useradd -m nogoat
-	arch-chroot /mnt echo nogoat:userpassword | chpasswd
+	arch-chroot /mnt echo "userpassword\nuserpassword\n" | passwd nogoat
 	echo "Step 09 : Installing GRUB and sudo"
 	pacstrap /mnt grub sudo
 	echo "Step 10 : Adding Standard User to sudo group"
@@ -42,6 +42,8 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	echo "Step 15 : Installing and Configuring NetworkManager"
 	pacstrap /mnt networkmanager
 	arch-chroot /mnt systemctl enable NetworkManager
+	echo "Step 16 : Installing VBox Guest Additions"
+	pacstrap /mnt vbox-guest-utils xf86-video-vmware
 	echo "Finished running Install steps."
 	echo "WARNING! This script has no way of knowing if all the steps finished correctly." 
 	echo "Please verify that yourself in order to ensure you don't have a broken system"
