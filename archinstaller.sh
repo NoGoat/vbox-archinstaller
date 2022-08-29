@@ -21,10 +21,10 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	echo "Step 06 : Setting Hostname"
 	arch-chroot /mnt echo archvm | cat > /etc/hostname
 	echo "Step 07 : Setting Root Password"
-	arch-chroot /mnt echo "rootpassword\nrootpassword\n" | passwd
+	arch-chroot /mnt echo root:rootpassword | chpasswd
 	echo "Step 08 : Making and Adding Standard User"
 	arch-chroot /mnt useradd -m nogoat
-	arch-chroot /mnt echo "userpassword\nuserpassword\n" | passwd nogoat
+	arch-chroot /mnt echo nogoat:password | chpasswd
 	echo "Step 09 : Installing GRUB and sudo"
 	pacstrap /mnt grub sudo
 	echo "Step 10 : Adding Standard User to sudo group"
