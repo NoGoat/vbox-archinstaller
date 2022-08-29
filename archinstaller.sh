@@ -3,7 +3,7 @@ echo "This is an Automation Script for a Virtualbox machine"
 echo "WARNING! DO NOT RUN THIS SCRIPT ON A REAL MACHINE"
 echo "Do you want to proceed? [y/N]"
 read choice
-if [ $choice = "y" || $choice = "Y" ]; then
+if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	echo "Step 01 : Partitioning and Mounting the Disk"
 	parted -s /dev/sda mklabel msdos mkpart primary 'ext4' '0%' '100%'
 	mount /dev/sda /mnt
