@@ -44,7 +44,7 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	arch-chroot /mnt systemctl enable NetworkManager
 	echo "Step 16 : Installing VBox Guest Additions"
 	pacstrap /mnt vbox-guest-utils xf86-video-vmware
-	systemctl enable vboxservice
+	arch-chroot /mnt systemctl enable vboxservice
 	echo "Finished running Install steps."
 	echo "WARNING! This script has no way of knowing if all the steps finished correctly." 
 	echo "Please verify that yourself in order to ensure you don't have a broken system"
