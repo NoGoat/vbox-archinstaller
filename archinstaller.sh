@@ -34,8 +34,8 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 	echo "Step 12 : Installing Xorg"
 	pacstrap /mnt xorg xterm xorg-xinit
-	echo "Step 13 : Installing KDE"
-	pacstrap /mnt plasma kdeplasma-addons dolphin konsole
+	echo "Step 13 : Installing XFCE"
+	pacstrap /mnt xfce4 xfce4-goodies
 	echo "Step 14 : Installing and Setting up SDDM"
 	pacstrap /mnt sddm
 	arch-chroot /mnt systemctl enable sddm
