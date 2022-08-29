@@ -28,7 +28,7 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	echo "Step 09 : Installing GRUB and sudo"
 	pacstrap /mnt grub sudo
 	echo "Step 10 : Adding Standard User to sudo group"
-	arch-chroot /mnt echo "nogoat ALL=(ALL:ALL) ALL" >> /etc/sudoers
+	arch-chroot /mnt echo 'nogoat	ALL=(ALL:ALL) ALL' >> /etc/sudoers
 	echo "Step 11 : Installing GRUB"
 	arch-chroot /mnt grub-install /dev/sda --force
 	arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
