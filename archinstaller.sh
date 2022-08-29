@@ -6,6 +6,7 @@ read choice
 if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	echo "Step 01 : Partitioning and Mounting the Disk"
 	parted -s /dev/sda mklabel msdos mkpart primary 'ext4' '0%' '100%'
+	echo y | mkfs.ext4 /dev/sda
 	mount /dev/sda /mnt
 	echo "Step 02 : Installing Base Packages"
 	pacstrap /mnt base linux linux-headers
