@@ -15,8 +15,8 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 	echo "Step 04 : Setting the Timezone"
 	arch-chroot /mnt ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 	echo "Step 05 : Generating Locales"
-	arch-chroot /mnt sed -i "s/#en_US.UTF8 UTF8/en_US.UTF8 UTF8/g" /etc/locale.gen
-	arch-chroot /mnt sed -i "s/#en_IN.UTF8/en_IN UTF8/g"
+	arch-chroot /mnt sed -i "s/#en_US.UTF8 UTF8/en_US.UTF8 UTF8/g" /etc/locale.conf
+	arch-chroot /mnt sed -i "s/#en_IN.UTF8/en_IN UTF8/g" /etc/locale.conf
 	arch-chroot /mnt locale-gen
 	echo "Step 06 : Setting Hostname"
 	arch-chroot /mnt echo archvm | cat > /etc/hostname
